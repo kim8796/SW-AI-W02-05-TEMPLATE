@@ -27,6 +27,8 @@ def find_max_divide_conquer(arr, left, right):
     """
     분할 정복으로 최댓값 찾기
     
+    
+
     Args:
         arr: 배열
         left: 시작 인덱스
@@ -36,18 +38,25 @@ def find_max_divide_conquer(arr, left, right):
         최댓값
     """
     # TODO: base case - 원소가 하나면 그 값 반환
-    pass
+    if left == right :
+        return arr[left]
+
     
     # TODO: 중간 지점 계산
-    pass
+    mid = int((left+right)/2)
     
     # TODO: 왼쪽 절반의 최댓값
-    pass
+    l_num = find_max_divide_conquer(arr,left,mid)
+
         
     # TODO: 오른쪽 절반의 최댓값
-    pass
+    r_num = find_max_divide_conquer(arr,mid+1,right)
     
     # TODO: 둘 중 큰 값 반환
+    if l_num > r_num :
+        return l_num
+    else:
+        return r_num
     pass
 
 # 테스트 케이스
