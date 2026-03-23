@@ -1,5 +1,6 @@
 # 그래프, DFS, BFS - 아침 산책 (백준 골드3)
 # 문제 링크: https://www.acmicpc.net/problem/21606
+from collections import deque
 import sys
 
 def main():
@@ -17,6 +18,24 @@ def main():
  
     visited = [False] * (n + 1)
     answer = 0
+
+    def bfs(start):
+        q = deque([start])
+        visited[start] = True
+        indoor_count = 0
+
+        while q:
+            now = q.popleft()
+
+            for nxt in graph[now]:
+                if is_indoor[nxt]:
+                    indoor_count += 1
+                elif not visited[nxt]:
+                    visited[nxt] = True
+                    q.append(nxt)
+
+        return indoor_count
+    
     def dfs(now):
         visited[now] = True
         indoor_count = 0
@@ -35,7 +54,7 @@ def main():
                 if is_indoor[nxt]:
                     answer += 1
         elif not visited[v]:
-            k = dfs(v)
+            k = bfs(v)
             answer += k * (k - 1)
     
     print(answer)
