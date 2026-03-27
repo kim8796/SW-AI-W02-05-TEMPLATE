@@ -45,9 +45,9 @@
 계산 과정 (예: fib(5)):
 일반 재귀:
                     fib(5)
-                 /          \
+                 /            
             fib(4)            fib(3)
-           /      \          /      \
+           /      \          /      
        fib(3)   fib(2)   fib(2)   fib(1)
        ...      ...      ...       ...
 총 계산: 15번 (중복 다수)
@@ -84,16 +84,19 @@ def fibonacci_memo(n, memo=None):
         n번째 피보나치 수
     """
     # TODO: memo가 None이면 빈 딕셔너리로 초기화
-    pass
+    if memo is None : 
+        memo = dict()
     
     # TODO: base case 
-    pass
+    if n == 1 or n == 0:
+        return n
     
     # TODO: 이미 계산한 값이 memo에 있으면 반환
-    pass
+    if n in memo :
+        return memo[n]
     
     # TODO: 재귀 호출하여 계산하고 memo에 저장
-    pass
+    memo[n] = fibonacci_memo(n-1,memo) + fibonacci_memo(n-2,memo)
     
     return memo[n]
 
@@ -112,9 +115,9 @@ if __name__ == "__main__":
     result = fibonacci_memo(n)
     print(f"fib({n}) = {result}")
     print()
-    
+    print() 
+    #깃에 다시올리기 위한 프린트와 주석
     # 비교: Week1의 재귀 방식은 fib(50)을 계산하기 어려움
     print("참고: 일반 재귀는 fib(40)도 몇 초 걸리지만")
     print("메모이제이션은 fib(100)도 순식간에 계산!")
-
 
