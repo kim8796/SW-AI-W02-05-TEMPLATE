@@ -115,9 +115,9 @@ if __name__ == "__main__":
     result = fibonacci_memo(n)
     print(f"fib({n}) = {result}")
     print()
-    
+    print() 
+    #깃에 다시올리기 위한 프린트와 주석
     # 비교: Week1의 재귀 방식은 fib(50)을 계산하기 어려움
     print("참고: 일반 재귀는 fib(40)도 몇 초 걸리지만")
     print("메모이제이션은 fib(100)도 순식간에 계산!")
-
 
